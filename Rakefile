@@ -13,41 +13,27 @@ require 'rake'
 
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "g2"
-  gem.homepage = "http://github.com/mattraibert/g2"
-  gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.name = "grasshopper"
+  gem.summary = 'A tiny mocking framework based on Mockito'
+  gem.description = 'A tiny mocking framework based on Mockito'
+  gem.version = '0.0.1'
+  gem.homepage = "http://github.com/mattraibert/grasshopper"
   gem.email = "mattraibert@gmail.com"
   gem.authors = ["Matt Raibert"]
-  # dependencies defined in Gemfile
+  gem.license = "GPL"
+
+  gem.required_rubygems_version = ">= 1.3.6"
+  gem.files = Dir['lib/**/*']
+  gem.rubyforge_project = 'nowarning'
+  gem.require_path = 'lib'
 end
 Jeweler::RubygemsDotOrgTasks.new
 
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
   test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
+  test.pattern = 'test/**/*_test.rb'
   test.verbose = true
-end
-
-require 'rcov/rcovtask'
-Rcov::RcovTask.new do |test|
-  test.libs << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
-  test.rcov_opts << '--exclude "gems/*"'
 end
 
 task :default => :test
-
-require 'rake/rdoctask'
-Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
-
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "g2 #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end
