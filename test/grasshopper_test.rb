@@ -32,4 +32,34 @@ class MockTest < MiniTest::Unit::TestCase
       2.times { Mock.verify(mock).message_sent_once }
     end
   end
+
+  def test_validate_param
+    mock = Mock.new
+    mock.message_with_param("to verify")
+    Mock.verify(mock).message_with_param("to verify")
+  end
+
+  def test_validate_two_params
+    mock = Mock.new
+    mock.message_with_params("to", "verify")
+    Mock.verify(mock).message_with_params("to", "verify")
+  end
+
+  def test_validate_wrong_param_explodes
+    mock = Mock.new
+    mock.message_with_param("param")
+
+    assert_raises MiniTest::Assertion do
+      Mock.verify(mock).message_with_param("wrong param")
+    end
+  end
+
+  def test_validate_wrong_number_params_explodes
+    mock = Mock.new
+    mock.message_with_param("param", "two")
+
+    assert_raises MiniTest::Assertion do
+      Mock.verify(mock).message_with_param("param")
+    end
+  end
 end

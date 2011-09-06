@@ -17,10 +17,11 @@ class Mock
   def method_missing(message, *args, &block)
     @messages ||= []
     if(@verify_next)
-      assert(@messages.include?(message), "Should have seen an invocation of #{message}")
-      @messages.delete_at(@messages.index(message) || @messages.length)
+      index = @messages.index {|item| message == item[0] and item[1] == args}
+      assert(index, "Should have seen an invocation of #{message}")
+      @messages.delete_at(index || @messages.length)
     else
-      @messages << message
+      @messages << [message, args]
     end
   end
   
