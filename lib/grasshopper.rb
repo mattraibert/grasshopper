@@ -23,3 +23,18 @@ class Mock
     mock
   end
 end
+
+class Stub
+  def initialize(stubs)
+    @stubs = stubs
+  end
+
+  def method_missing(sym, *args)
+    return nil unless @stubs.has_key?(sym)
+    @stubs[sym]
+  end
+
+  def self.like(name = "a stub", stubs)
+    Stub.new(stubs)
+  end
+end

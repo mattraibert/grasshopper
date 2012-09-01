@@ -62,4 +62,14 @@ class MockTest < MiniTest::Unit::TestCase
       Mock.verify(mock).message_with_param("param")
     end
   end
+
+  def test_can_stub_a_method
+    assert_equal(9, Stub.like(:mtd => 9).mtd)
+  end
+
+  def test_can_stub_two_methods
+    stub = Stub.like(:mt1 => 9, :mt2 => 99)
+    assert_equal(9, stub.mt1)
+    assert_equal(99, stub.mt2)
+  end
 end
