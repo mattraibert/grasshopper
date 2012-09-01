@@ -1,8 +1,0 @@
-= Grasshopper
-
-A tiny mocking framework based on Mockito
-
-== Copyright
-
-Copyright (c) 2011 Matt Raibert.
-Grasshopper is available under the GPL v3 see LICENSE.txt for further details.
