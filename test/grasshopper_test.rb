@@ -100,4 +100,20 @@ class MockTest < MiniTest::Unit::TestCase
     assert_equal(5, stub.money("gimmie"))
     assert_nil(stub.monkey)
   end
+
+  def test_another_call_doesnt_confuse
+    stub = Stub.new
+    stub.bang
+    Stub.when(stub.bop).then_return("pow")
+    assert_equal("pow", stub.bop)
+    assert_equal(nil, stub.bang)
+  end
+
+  def test_stub_like
+    stub = Stub.like(:zap => "kapow!", :zip => [:one => 1, :two => 2])
+
+    assert_equal("kapow!", stub.zap)
+    assert_equal([:one => 1, :two => 2], stub.zip)
+    assert_equal(nil, stub.bop)
+  end
 end

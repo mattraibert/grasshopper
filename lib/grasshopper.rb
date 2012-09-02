@@ -53,4 +53,12 @@ class Stub
     @@message = [sym, args]
     @stubs[[sym, args]]
   end
+
+  def self.like(stubs)
+    stub = Stub.new
+    stubs.each do |method, retval|
+      Stub.when(stub.send(method)).then_return(retval)
+    end
+    stub
+  end
 end

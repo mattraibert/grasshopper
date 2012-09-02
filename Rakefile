@@ -16,7 +16,7 @@ Jeweler::Tasks.new do |gem|
   gem.name = "grasshopper"
   gem.summary = 'A tiny mocking framework based on Mockito'
   gem.description = 'A tiny mocking framework based on Mockito'
-  gem.version = '0.3.0'
+  gem.version = '0.4.0'
   gem.homepage = "http://github.com/mattraibert/grasshopper"
   gem.email = "mattraibert@gmail.com"
   gem.authors = ["Matt Raibert"]
