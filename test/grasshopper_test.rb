@@ -12,9 +12,7 @@ class MockTest < MiniTest::Unit::TestCase
 
   def test_no_failure_if_message_was_sent
     mock = Mock.new
-
     mock.message_was_sent
-
     Mock.verify(mock).message_was_sent
   end
 
@@ -69,13 +67,25 @@ class MockTest < MiniTest::Unit::TestCase
 
   def test_can_stub_a_method
     stub = Stub.new
-    Stub.if_you_hear(stub).this_message.give_em(9)
+    Stub.when(stub.this_message).then_return(9)
     assert_equal(9, stub.this_message)
+  end
+
+  def test_two_stubs
+    stub1 = Stub.new
+    stub2 = Stub.new
+    Stub.when(stub1.this_message).then_return(9)
+    Stub.when(stub2.that_message).then_return(99)
+
+    assert_equal(nil, stub1.that_message)
+    assert_equal(9, stub1.this_message)
+    assert_equal(nil, stub2.this_message)
+    assert_equal(99, stub2.that_message)
   end
 
   def test_can_stub_a_method_with_param
     stub = Stub.new
-    Stub.if_you_hear(stub).secret(22).give_em(9)
+    Stub.when(stub.secret(22)).then_return(9)
 
     assert_equal(nil, stub.secret(21))
     assert_equal(9, stub.secret(22))
@@ -83,8 +93,8 @@ class MockTest < MiniTest::Unit::TestCase
 
   def test_can_stub_two_methods_with_param
     stub = Stub.new
-    Stub.if_you_hear(stub).message.give_em(9)
-    Stub.if_you_hear(stub).secret(22).give_em("nevar!")
+    Stub.when(stub.message).then_return(9)
+    Stub.when(stub.secret(22)).then_return("nevar!")
 
     assert_equal(9, stub.message)
     assert_equal(nil, stub.secret(21))

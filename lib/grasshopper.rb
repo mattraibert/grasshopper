@@ -25,16 +25,12 @@ class Mock
 end
 
 class StubHelper
-  def initialize(stub)
+  def initialize(stub, message)
     @stub = stub
+    @message = message
   end
 
-  def method_missing(sym, *args)
-    @message = [sym, args]
-    self
-  end
-
-  def give_em(retval)
+  def then_return(retval)
     @stub.add_a_stub(@message, retval)
   end
 end
@@ -48,11 +44,13 @@ class Stub
     @stubs[message] = retval
   end
 
-  def self.if_you_hear(stub)
-    StubHelper.new(stub)
+  def self.when(whatever)
+    StubHelper.new(@@stub, @@message)
   end
 
   def method_missing(sym, *args)
+    @@stub = self
+    @@message = [sym, args]
     @stubs[[sym, args]]
   end
 end
