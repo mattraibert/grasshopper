@@ -1,6 +1,6 @@
 # Grasshopper
 
-A tiny mocking framework based on [Mockito](http://code.google.com/p/mockito/). I built it so that I could write unit tests in the [Arrage-Act-Assert](http://c2.com/cgi/wiki?ArrangeActAssert) style.
+A tiny mocking framework focused on the [Arrage-Act-Assert](http://c2.com/cgi/wiki?ArrangeActAssert) test pattern. Grasshopper is heavily modeled after [Mockito](http://code.google.com/p/mockito/).
 
 ## Examples
 
@@ -31,7 +31,7 @@ stub.money("gimmie")         #=> 5
 stub.monkey                  #=> nil
 ```
 
-or you can use this shorter syntax if you prefer:
+or you can use this shorter style if you prefer:
 
 ```ruby
 Stub.like(:keys => [:door_key, :mail_key], :money => 5)

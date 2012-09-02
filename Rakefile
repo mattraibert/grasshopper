@@ -14,26 +14,24 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   gem.name = "grasshopper"
-  gem.summary = 'A tiny mocking framework based on Mockito'
-  gem.description = 'A tiny mocking framework based on Mockito'
-  gem.version = '0.4.0'
+  gem.summary = 'A tiny mocking framework focused on the Arrange-Act-Assert test pattern'
+  gem.description = 'A tiny mocking framework focused on the [Arrage-Act-Assert](http://c2.com/cgi/wiki?ArrangeActAssert) test pattern. Grasshopper is heavily modeled after [Mockito](http://code.google.com/p/mockito/).'
+  gem.version = '0.4.1'
   gem.homepage = "http://github.com/mattraibert/grasshopper"
   gem.email = "mattraibert@gmail.com"
-  gem.authors = ["Matt Raibert"]
-  gem.license = "GPL"
-
-  gem.required_rubygems_version = ">= 1.3.6"
+  gem.authors = ["Matt J Raibert"]
+  gem.license = "GPLv3"
   gem.files = Dir['lib/**/*']
-  gem.rubyforge_project = 'nowarning'
+  gem.test_files = Dir["test/**/*"]
   gem.require_path = 'lib'
 end
 Jeweler::RubygemsDotOrgTasks.new
 
 require 'rake/testtask'
-Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/*_test.rb'
-  test.verbose = true
+Rake::TestTask.new do |t|
+  t.libs << "test"
+  t.test_files = FileList['test/**/*_test.rb']
+  t.verbose = true
 end
 
 task :default => :test
