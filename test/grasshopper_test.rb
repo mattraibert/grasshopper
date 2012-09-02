@@ -93,11 +93,11 @@ class MockTest < MiniTest::Unit::TestCase
 
   def test_can_stub_two_methods_with_param
     stub = Stub.new
-    Stub.when(stub.message).then_return(9)
-    Stub.when(stub.secret(22)).then_return("nevar!")
+    Stub.when(stub.keys).then_return([:door_key, :mail_key])
+    Stub.when(stub.money("gimmie")).then_return(5)
 
-    assert_equal(9, stub.message)
-    assert_equal(nil, stub.secret(21))
-    assert_equal("nevar!", stub.secret(22))
+    assert_equal([:door_key, :mail_key], stub.keys)
+    assert_equal(5, stub.money("gimmie"))
+    assert_nil(stub.monkey)
   end
 end

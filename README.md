@@ -25,7 +25,7 @@ Stub is a person who holds something for you and gives it to anyone who knows ho
 ```ruby
 stub = Stub.new
 Stub.when(stub.keys).then_return([:door_key, :mail_key])
-Stub.when(stub.money).then_return(5)
+Stub.when(stub.money("gimmie")).then_return(5)
 stub.keys                    #=> [:door_key, :mail_key]
 stub.money("gimmie")         #=> 5
 stub.monkey                  #=> nil
