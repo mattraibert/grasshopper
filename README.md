@@ -1,6 +1,6 @@
 # Grasshopper
 
-A tiny mocking framework based on Mockito
+A tiny mocking framework based on [Mockito](http://code.google.com/p/mockito/)
 
 ## Examples
 
