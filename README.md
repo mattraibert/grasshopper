@@ -1,6 +1,6 @@
 # Grasshopper
 
-A tiny mocking framework based on [Mockito](http://code.google.com/p/mockito/)
+A tiny mocking framework based on [Mockito](http://code.google.com/p/mockito/). I built it so that I could write unit tests in the [Arrage-Act-Assert](http://c2.com/cgi/wiki?ArrangeActAssert) style.
 
 ## Examples
 
