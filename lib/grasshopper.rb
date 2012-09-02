@@ -30,7 +30,6 @@ class Stub
   end
 
   def method_missing(sym, *args)
-    return nil unless @stubs.has_key?(sym)
     @stubs[sym]
   end
 
