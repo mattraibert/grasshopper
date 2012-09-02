@@ -23,10 +23,12 @@ Mock.verify(mock).goodbye    # wait(AssertionFailed)! they left without saying g
 Stub is a person who holds something for you and gives it to anyone who knows how to ask. You can ask Stub for anything, but you'll only get what you put into it.
 
 ```ruby
-stub = Stub.like(:keys => [:door_key, :mail_key], :money => 5)
+stub = Stub.new
+Stub.if_you_hear(stub).keys.give_em([:door_key, :mail_key])
+Stub.if_you_hear(stub).money.give_em(5)
 stub.keys                    #=> [:door_key, :mail_key]
 stub.money("gimmie")         #=> 5
-stub.monkeys                 #=> nil
+stub.monkey                  #=> nil
 ```
 
 ## Naming

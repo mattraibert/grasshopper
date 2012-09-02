@@ -24,16 +24,35 @@ class Mock
   end
 end
 
-class Stub
-  def initialize(stubs)
-    @stubs = stubs
+class StubHelper
+  def initialize(stub)
+    @stub = stub
   end
 
   def method_missing(sym, *args)
-    @stubs[sym]
+    @message = [sym, args]
+    self
   end
 
-  def self.like(name = "a stub", stubs)
-    Stub.new(stubs)
+  def give_em(retval)
+    @stub.add_a_stub(@message, retval)
+  end
+end
+
+class Stub
+  def initialize
+    @stubs = {}
+  end
+
+  def add_a_stub(message, retval)
+    @stubs[message] = retval
+  end
+
+  def self.if_you_hear(stub)
+    StubHelper.new(stub)
+  end
+
+  def method_missing(sym, *args)
+    @stubs[[sym, args]]
   end
 end
