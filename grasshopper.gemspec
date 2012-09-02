@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = "grasshopper"
-  s.version = "0.4.0"
+  s.version = "0.4.1"
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 1.3.6") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Matt Raibert"]
+  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
+  s.authors = ["Matt J Raibert"]
   s.date = "2012-09-02"
-  s.description = "A tiny mocking framework based on Mockito"
+  s.description = "A tiny mocking framework focused on the [Arrage-Act-Assert](http://c2.com/cgi/wiki?ArrangeActAssert) test pattern. Grasshopper is heavily modeled after [Mockito](http://code.google.com/p/mockito/)."
   s.email = "mattraibert@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -20,11 +20,11 @@ Gem::Specification.new do |s|
     "lib/grasshopper.rb"
   ]
   s.homepage = "http://github.com/mattraibert/grasshopper"
-  s.licenses = ["GPL"]
+  s.licenses = ["GPLv3"]
   s.require_paths = ["lib"]
-  s.rubyforge_project = "nowarning"
   s.rubygems_version = "1.8.24"
-  s.summary = "A tiny mocking framework based on Mockito"
+  s.summary = "A tiny mocking framework focused on the Arrange-Act-Assert test pattern"
+  s.test_files = ["test/grasshopper_test.rb", "test/test_helper.rb"]
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
