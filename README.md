@@ -20,7 +20,7 @@ Mock.verify(mock).goodbye    # wait(AssertionFailed)! they left without saying g
 
 ### Stub
 
-Stub is a person who holds something for you and gives it to anyone who knows how to ask. You can ask Stub for anything, but you'll only get what you put into it.
+Stub is a person who holds something for you and gives it to anyone who knows how to ask. You can ask Stub for anything, but you'll only get out what you put into it.
 
 ```ruby
 stub = Stub.new
@@ -46,5 +46,5 @@ Grasshopper is named for a [restaurant](http://grasshoppervegan.com/) in Allston
 
 ## Copyright
 
-Copyright (c) 2011 Matt Raibert.
+Copyright (c) 2011-2012 Matt Raibert.
 Grasshopper is available under the GPL v3 see LICENSE.txt for further details.
