@@ -6,4 +6,5 @@ group :development do
   gem 'minitest-reporters', '>= 0.5.0'
   gem "bundler"
   gem 'jeweler'
+  gem 'posto'
 end
