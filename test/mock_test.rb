@@ -60,4 +60,11 @@ class MockTest < MiniTest::Unit::TestCase
       Mock.verify(mock).message_with_param("param")
     end
   end
+
+  def test_always_returns_nil
+    mock = Mock.new
+    assert_nil mock.anything
+    assert_nil mock.anything("even with params")
+    assert_nil mock.anything(["even with array params"])
+  end
 end
