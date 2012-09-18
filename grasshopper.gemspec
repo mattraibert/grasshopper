@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = "grasshopper"
-  s.version = "0.4.3"
+  s.version = "0.4.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Matt J Raibert"]
-  s.date = "2012-09-02"
-  s.description = "A tiny mocking framework focused on the [Arrage-Act-Assert](http://c2.com/cgi/wiki?ArrangeActAssert) test pattern. Grasshopper is heavily modeled after [Mockito](http://code.google.com/p/mockito/)."
+  s.date = "2012-09-18"
+  s.description = "A tiny mocking framework focused on the Arrage-Act-Assert test pattern. Grasshopper is heavily modeled after Mockito."
   s.email = "mattraibert@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.24"
   s.summary = "A tiny mocking framework focused on the Arrange-Act-Assert test pattern"
-  s.test_files = ["test/test_helper.rb", "test/mock_test.rb", "test/stub_test.rb"]
+  s.test_files = ["test/stub_test.rb", "test/test_helper.rb", "test/mock_test.rb"]
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
@@ -36,17 +36,20 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<minitest-reporters>, [">= 0.5.0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
+      s.add_development_dependency(%q<posto>, [">= 0"])
     else
       s.add_dependency(%q<minitest>, [">= 0"])
       s.add_dependency(%q<minitest-reporters>, [">= 0.5.0"])
       s.add_dependency(%q<bundler>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
+      s.add_dependency(%q<posto>, [">= 0"])
     end
   else
     s.add_dependency(%q<minitest>, [">= 0"])
     s.add_dependency(%q<minitest-reporters>, [">= 0.5.0"])
     s.add_dependency(%q<bundler>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
+    s.add_dependency(%q<posto>, [">= 0"])
   end
 end
 
