@@ -16,7 +16,7 @@ Jeweler::Tasks.new do |gem|
   gem.name = "grasshopper"
   gem.summary = 'A tiny mocking framework focused on the Arrange-Act-Assert test pattern'
   gem.description = "A tiny mocking framework focused on the Arrage-Act-Assert test pattern. Grasshopper is heavily modeled after Mockito."
-  gem.version = '0.4.2'
+  gem.version = '0.4.3'
   gem.homepage = "http://github.com/mattraibert/grasshopper"
   gem.email = "mattraibert@gmail.com"
   gem.authors = ["Matt J Raibert"]
