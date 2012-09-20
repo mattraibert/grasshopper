@@ -16,7 +16,7 @@ GEM
       minitest (>= 2.12, < 4.0)
       powerbar
     multi_json (1.3.6)
-    posto (0.3.2)
+    posto (0.3.3)
       activesupport
       highline
     powerbar (1.0.8)
