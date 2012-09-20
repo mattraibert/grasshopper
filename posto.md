@@ -8,3 +8,4 @@ todo
 5. Mock class methods
 6. implement respond_to?
 7. give mocks stub functionality
+8. allow a user to verify io wiring
