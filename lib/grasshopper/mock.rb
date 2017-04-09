@@ -9,15 +9,17 @@ module Grasshopper
     end
 
     def method_missing(message, *args, &block)
+      request = MessageHeard.new(message, args)
+
       @messages ||= []
       if @verify_next
-        index = @messages.index { |heard| message == heard.message and heard.args == args }
-        unless index
+        index = @messages.index { |heard| request == heard }
+        if index.nil?
           raise "Should have seen an invocation of #{message}(#{args.join(", ")})\n#{@messages.inspect}"
         end
         @messages.delete_at(index || @messages.length)
       else
-        @messages << MessageHeard.new(message, args)
+        @messages << request
       end
       nil
     end
