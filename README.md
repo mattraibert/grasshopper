@@ -11,11 +11,11 @@ For more examples, see the [unit tests](https://github.com/mattraibert/grasshopp
 Mock is a person who listens carefully but never says anything. You can say anything to Mock, but you'll only get crickets back.
 
 ```ruby
-mock = Mock.new
+mock = Grasshopper::Mock.new
 mock.hello                   #=> nil
 mock.how_are_you?            #=> nil
-Mock.verify(mock).hello      # yes, someone did tell me hello.
-Mock.verify(mock).goodbye    # wait(AssertionFailed)! they left without saying goodbye!
+Grasshopper::Mock.verify(mock).hello      # yes, someone did tell me hello.
+Grasshopper::Mock.verify(mock).goodbye    # wait(AssertionFailed)! they left without saying goodbye!
 ```
 
 ### Stub
@@ -23,9 +23,9 @@ Mock.verify(mock).goodbye    # wait(AssertionFailed)! they left without saying g
 Stub is a person who holds something for you and gives it to anyone who knows how to ask. You can ask Stub for anything, but you'll only get out what you put into it.
 
 ```ruby
-stub = Stub.new
-Stub.when(stub.keys).then_return([:door_key, :mail_key])
-Stub.when(stub.money("gimmie")).then_return(5)
+stub = Grasshopper::Stub.new
+Grasshopper::Stub.when(stub.keys).then_return([:door_key, :mail_key])
+Grasshopper::Stub.when(stub.money("gimmie")).then_return(5)
 stub.keys                    #=> [:door_key, :mail_key]
 stub.money("gimmie")         #=> 5
 stub.monkey                  #=> nil
@@ -34,7 +34,7 @@ stub.monkey                  #=> nil
 or you can use this shorter style if you prefer:
 
 ```ruby
-Stub.like(:keys => [:door_key, :mail_key], :money => 5)
+Grasshopper::Stub.like(:keys => [:door_key, :mail_key], :money => 5)
 stub.keys                    #=> [:door_key, :mail_key]
 stub.money("gimmie")         #=> 5
 stub.monkey                  #=> nil
@@ -46,5 +46,10 @@ Grasshopper is named for a [restaurant](http://grasshoppervegan.com/) in Allston
 
 ## Copyright
 
-Copyright (c) 2011-2012 Matt Raibert.
-Grasshopper is available under the GPL v3 see LICENSE.txt for further details.
+Copyright 2011-2017 Position Development, LLC.
+
+Grasshopper is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+Grasshopper is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License along with Grasshopper. If not, see http://www.gnu.org/licenses/.
