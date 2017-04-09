@@ -61,6 +61,12 @@ class MockTest < MiniTest::Test
     end
   end
 
+  def test_any_param_matcher_can_stand_in_for_any_param
+    mock = Grasshopper::Mock.new
+    mock.value = "nice value"
+    Grasshopper::Mock.verify(mock).value=(Grasshopper::Mock::AnyParams.new)
+  end
+
   def test_always_returns_nil
     mock = Grasshopper::Mock.new
     assert_nil mock.anything

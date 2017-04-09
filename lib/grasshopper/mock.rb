@@ -13,7 +13,11 @@ module Grasshopper
 
       @messages ||= []
       if @verify_next
-        index = @messages.index { |heard| request == heard }
+        if args.first.is_a? AnyParams
+          index = @messages.index { |heard| request.message == heard.message }
+        else
+          index = @messages.index { |heard| request == heard }
+        end
         if index.nil?
           raise "Should have seen an invocation of #{message}(#{args.join(", ")})\n#{@messages.inspect}"
         end
@@ -31,7 +35,8 @@ module Grasshopper
       mock.verify_next
       mock
     end
-    class AnyParam
+
+    class AnyParams
 
     end
   end
