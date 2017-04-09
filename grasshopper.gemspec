@@ -16,4 +16,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency(%q<minitest-reporters>, [">= 0.5.0"])
   gem.add_development_dependency(%q<bundler>, [">= 0"])
   gem.add_development_dependency(%q<posto>, [">= 0"])
+  gem.add_development_dependency(%q<pry>, [">= 0"])
 end
