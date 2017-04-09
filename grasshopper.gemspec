@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |gem|
   gem.name = "grasshopper"
-  gem.version = '1.0.1'
+  gem.version = '1.0.2'
   gem.license = "LGPL-3.0"
   gem.summary = 'A tiny mocking framework focused on the Arrange-Act-Assert test pattern'
   gem.description = "A tiny mocking framework focused on the Arrage-Act-Assert test pattern. Grasshopper is heavily modeled after Mockito."

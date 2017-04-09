@@ -36,8 +36,11 @@ module Grasshopper
       mock
     end
 
-    class AnyParams
+    def self.any_params
+      Grasshopper::Mock::AnyParams.new
+    end
 
+    class AnyParams
     end
   end
 end
