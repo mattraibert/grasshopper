@@ -23,6 +23,7 @@ module Grasshopper
     end
 
     def self.verify mock
+      raise "Not a #{self.class}" unless mock.is_a? Grasshopper::Mock
       mock.verify_next
       mock
     end

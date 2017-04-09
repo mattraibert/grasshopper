@@ -67,4 +67,11 @@ class MockTest < MiniTest::Test
     assert_nil mock.anything("even with params")
     assert_nil mock.anything(["even with array params"])
   end
+
+  def test_dont_verify_non_mocks
+    non_mock = Object.new
+    assert_raises RuntimeError do
+      Grasshopper::Mock.verify(non_mock)
+    end
+  end
 end
