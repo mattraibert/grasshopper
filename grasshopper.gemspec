@@ -2,13 +2,13 @@
 
 Gem::Specification.new do |gem|
   gem.name = "grasshopper"
-  gem.version = '0.4.5'
-  gem.license = "GPLv3"
+  gem.version = '1.0.0'
+  gem.license = "LGPL-3.0"
   gem.summary = 'A tiny mocking framework focused on the Arrange-Act-Assert test pattern'
   gem.description = "A tiny mocking framework focused on the Arrage-Act-Assert test pattern. Grasshopper is heavily modeled after Mockito."
   gem.homepage = "http://github.com/mattraibert/grasshopper"
   gem.author = "Matt J Raibert"
-  gem.email = "mattraibert@gmail.com"
+  gem.email = "mattraibert@positiondev.com"
   gem.files = ["Rakefile", "README.md", "LICENSE.txt"]
   gem.files += Dir['lib/**/*']
   gem.test_files = Dir["test/**/*"]
