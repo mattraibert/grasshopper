@@ -1,5 +1,8 @@
 module Grasshopper
   class Mock
+    def initialize
+      @verify_next = false
+    end
 
     def verify_next
       @verify_next = true
@@ -7,7 +10,7 @@ module Grasshopper
 
     def method_missing(message, *args, &block)
       @messages ||= []
-      if !@verify_next.nil?
+      if @verify_next
         index = @messages.index { |item| message == item[0] and item[1] == args }
         unless index
           raise "Should have seen an invocation of #{message}(#{args.join(", ")})\n#{@messages.inspect}"
