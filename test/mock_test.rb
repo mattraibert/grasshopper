@@ -47,9 +47,18 @@ class MockTest < MiniTest::Test
     mock = Grasshopper::Mock.new
     mock.message_with_param("param")
 
-    assert_raises RuntimeError do
+    e = assert_raises RuntimeError do
       Grasshopper::Mock.verify(mock).message_with_param("wrong param")
     end
+
+    expected_message = <<-TXT.chomp
+Should have seen an invocation of message_with_param(wrong param))
+
+Messages Seen:
+message_with_param(param)
+    TXT
+
+    assert_equal(expected_message,e.message)
   end
 
   def test_validate_wrong_number_params_explodes

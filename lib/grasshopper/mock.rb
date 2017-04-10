@@ -19,16 +19,28 @@ module Grasshopper
           index = @messages.index { |heard| request == heard }
         end
         if index.nil?
-          raise "Should have seen an invocation of #{message}(#{args.join(", ")})\n#{@messages.inspect}"
+          raise not_seen_message(request)
         end
         @messages.delete_at(index || @messages.length)
       else
-        @messages << request
+        record_request(request)
       end
       nil
     end
 
-    MessageHeard = Struct.new(:message, :args)
+    def not_seen_message(request)
+      "Should have seen an invocation of #{request})\n\nMessages Seen:\n#{@messages.map(&:to_s).join("\n")}"
+    end
+
+    def record_request(request)
+      @messages << request
+    end
+
+    MessageHeard = Struct.new(:message, :args) do
+      def to_s
+        "#{self.message}(#{self.args.join(", ")})"
+      end
+    end
 
     def self.verify mock
       raise "Not a #{self.class}" unless mock.is_a? Grasshopper::Mock
