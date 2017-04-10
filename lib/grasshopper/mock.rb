@@ -19,7 +19,7 @@ module Grasshopper
           index = @messages.index { |heard| request == heard }
         end
         if index.nil?
-          raise not_seen_message(request)
+          raise not_seen_exception(request)
         end
         @messages.delete_at(index || @messages.length)
       else
@@ -28,8 +28,8 @@ module Grasshopper
       nil
     end
 
-    def not_seen_message(request)
-      "Should have seen an invocation of #{request})\n\nMessages Seen:\n#{@messages.map(&:to_s).join("\n")}"
+    def not_seen_exception(request)
+      NotSeen.new("Should have seen an invocation of #{request})\n\nMessages Seen:\n#{@messages.map(&:to_s).join("\n")}")
     end
 
     def record_request(request)
@@ -43,7 +43,7 @@ module Grasshopper
     end
 
     def self.verify mock
-      raise "Not a #{self.class}" unless mock.is_a? Grasshopper::Mock
+      raise "Tried to verify a #{mock.class}" unless mock.is_a? Grasshopper::Mock
       mock.verify_next
       mock
     end
@@ -54,5 +54,8 @@ module Grasshopper
 
     class AnyParams
     end
+  end
+
+  class NotSeen < ::Exception
   end
 end
