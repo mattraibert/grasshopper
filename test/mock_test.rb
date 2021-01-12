@@ -16,17 +16,23 @@ class MockTest < MiniTest::Test
     Grasshopper::Mock.verify(mock).message_was_sent
   end
 
+  class RespondsToMessageWasSent
+    def message_was_sent
+      true
+    end
+  end
+
   def test_verify_messages_sent_to_mock
     mock = Grasshopper::Mock.new
     mock.message_was_sent
-    mock.verify_responds_to_heard_messages(Struct.new(:message_was_sent).new)
+    mock.verify_responds_to_heard_messages(RespondsToMessageWasSent.new)
   end
 
   def test_verify_unimplemented_messages_explode
     mock = Grasshopper::Mock.new
     mock.message_not_implemented
     assert_raises Grasshopper::NotImplemented do
-      mock.verify_responds_to_heard_messages(Struct.new(:message_was_sent).new)
+      mock.verify_responds_to_heard_messages(RespondsToMessageWasSent.new)
     end
   end
 
