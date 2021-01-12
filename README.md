@@ -46,7 +46,7 @@ Grasshopper is named for a [restaurant](http://grasshoppervegan.com/) in Allston
 
 ## Copyright
 
-Copyright 2011-2017 Position Development, LLC.
+Copyright 2011-2021 Position Development, LLC.
 
 Grasshopper is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
