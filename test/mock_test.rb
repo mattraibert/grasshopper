@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'grasshopper/mock'
 
-class MockTest < MiniTest::Test
+class MockTest < Minitest::Test
   def test_fails_verify_if_no_such_message
     mock = Grasshopper::Mock.new
 
