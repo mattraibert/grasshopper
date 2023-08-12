@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'grasshopper/stub'
 
-class StubTest < MiniTest::Test
+class StubTest < Minitest::Test
   def test_stub_returns_nil
     assert_nil(Grasshopper::Stub.new.unknown_method)
   end

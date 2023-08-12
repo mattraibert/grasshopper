@@ -12,7 +12,6 @@ Gem::Specification.new do |gem|
   gem.files = ["Rakefile", "README.md", "LICENSE.txt"]
   gem.files += Dir['lib/**/*']
   gem.test_files = Dir["test/**/*"]
-  gem.add_development_dependency(%q<minitest>, [">= 0"])
-  gem.add_development_dependency(%q<minitest-reporters>, [">= 0.5.0"])
-  gem.add_development_dependency(%q<bundler>, [">= 0"])
+  gem.add_development_dependency('minitest', [">= 0"])
+  gem.add_development_dependency('minitest-reporters', [">= 0.5.0"])
 end
