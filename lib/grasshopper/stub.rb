@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Grasshopper
   class Stub
     def initialize
@@ -8,7 +10,7 @@ module Grasshopper
       @stubs[message] = retval
     end
 
-    def self.when(whatever)
+    def self.when(_whatever)
       StubHelper.new(@@stub, @@message)
     end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 require 'grasshopper/mock'
 
@@ -54,29 +56,29 @@ class MockTest < Minitest::Test
 
   def test_validate_param
     mock = Grasshopper::Mock.new
-    mock.message_with_param("to verify")
-    Grasshopper::Mock.verify(mock).message_with_param("to verify")
+    mock.message_with_param('to verify')
+    Grasshopper::Mock.verify(mock).message_with_param('to verify')
   end
 
   def test_validate_two_params
     mock = Grasshopper::Mock.new
-    mock.message_with_params("to", "verify")
-    Grasshopper::Mock.verify(mock).message_with_params("to", "verify")
+    mock.message_with_params('to', 'verify')
+    Grasshopper::Mock.verify(mock).message_with_params('to', 'verify')
   end
 
   def test_validate_wrong_param_explodes
     mock = Grasshopper::Mock.new
-    mock.message_with_param("param")
+    mock.message_with_param('param')
 
     e = assert_raises Grasshopper::NotSeen do
-      Grasshopper::Mock.verify(mock).message_with_param("wrong param")
+      Grasshopper::Mock.verify(mock).message_with_param('wrong param')
     end
 
-    expected_message = <<-TXT.chomp
-Should have seen an invocation of message_with_param(wrong param))
+    expected_message = <<~TXT.chomp
+      Should have seen an invocation of message_with_param(wrong param))
 
-Messages Seen:
-message_with_param(param)
+      Messages Seen:
+      message_with_param(param)
     TXT
 
     assert_equal(expected_message, e.message)
@@ -84,28 +86,28 @@ message_with_param(param)
 
   def test_validate_wrong_number_params_explodes
     mock = Grasshopper::Mock.new
-    mock.message_with_param("param", "two")
+    mock.message_with_param('param', 'two')
 
     assert_raises Grasshopper::NotSeen do
-      Grasshopper::Mock.verify(mock).message_with_param("param")
+      Grasshopper::Mock.verify(mock).message_with_param('param')
     end
   end
 
   def test_any_param_matcher_can_stand_in_for_any_param
     mock             = Grasshopper::Mock.new
-    mock.value       = "nice value"
-    mock.other_value = "other value"
+    mock.value       = 'nice value'
+    mock.other_value = 'other value'
     mock.takes_two(1, 2)
-    Grasshopper::Mock.verify(mock).value      = Grasshopper::Mock.any_params
-    Grasshopper::Mock.verify(mock).other_value= Grasshopper::Mock.any_params
+    Grasshopper::Mock.verify(mock).value = Grasshopper::Mock.any_params
+    Grasshopper::Mock.verify(mock).other_value = Grasshopper::Mock.any_params
     Grasshopper::Mock.verify(mock).takes_two Grasshopper::Mock.any_params
   end
 
   def test_always_returns_nil
     mock = Grasshopper::Mock.new
     assert_nil mock.anything
-    assert_nil mock.anything("even with params")
-    assert_nil mock.anything(["even with array params"])
+    assert_nil mock.anything('even with params')
+    assert_nil mock.anything(['even with array params'])
   end
 
   OtherObject = Struct.new(:foo)
@@ -115,6 +117,6 @@ message_with_param(param)
     e        = assert_raises RuntimeError do
       Grasshopper::Mock.verify(non_mock)
     end
-    assert_equal("Tried to verify a MockTest::OtherObject", e.message)
+    assert_equal('Tried to verify a MockTest::OtherObject', e.message)
   end
 end

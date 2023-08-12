@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 require 'grasshopper/stub'
 
@@ -34,27 +36,27 @@ class StubTest < Minitest::Test
 
   def test_can_stub_two_methods_with_param
     stub = Grasshopper::Stub.new
-    Grasshopper::Stub.when(stub.keys).then_return([:door_key, :mail_key])
-    Grasshopper::Stub.when(stub.money("gimmie")).then_return(5)
+    Grasshopper::Stub.when(stub.keys).then_return(%i[door_key mail_key])
+    Grasshopper::Stub.when(stub.money('gimmie')).then_return(5)
 
-    assert_equal([:door_key, :mail_key], stub.keys)
-    assert_equal(5, stub.money("gimmie"))
+    assert_equal(%i[door_key mail_key], stub.keys)
+    assert_equal(5, stub.money('gimmie'))
     assert_nil(stub.monkey)
   end
 
   def test_another_call_doesnt_confuse
     stub = Grasshopper::Stub.new
     stub.bang
-    Grasshopper::Stub.when(stub.bop).then_return("pow")
-    assert_equal("pow", stub.bop)
+    Grasshopper::Stub.when(stub.bop).then_return('pow')
+    assert_equal('pow', stub.bop)
     assert_nil(stub.bang)
   end
 
   def test_stub_like
-    stub = Grasshopper::Stub.like(:zap => "kapow!", :zip => [:one => 1, :two => 2])
+    stub = Grasshopper::Stub.like(zap: 'kapow!', zip: [one: 1, two: 2])
 
-    assert_equal("kapow!", stub.zap)
-    assert_equal([:one => 1, :two => 2], stub.zip)
+    assert_equal('kapow!', stub.zap)
+    assert_equal([one: 1, two: 2], stub.zip)
     assert_nil(stub.bop)
   end
 end

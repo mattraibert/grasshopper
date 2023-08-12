@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Grasshopper
   class Mock
     def initialize
@@ -8,19 +10,18 @@ module Grasshopper
       @verify_next = true
     end
 
-    def method_missing(message, *args, &block)
+    def method_missing(message, *args)
       request = MessageHeard.new(message, args)
 
       @requests ||= []
       if @verify_next
-        if args.first.is_a? AnyParams
-          index = @requests.index { |heard| request.message == heard.message }
-        else
-          index = @requests.index { |heard| request == heard }
-        end
-        if index.nil?
-          raise not_seen_exception(request)
-        end
+        index = if args.first.is_a? AnyParams
+                  @requests.index { |heard| request.message == heard.message }
+                else
+                  @requests.index { |heard| request == heard }
+                end
+        raise not_seen_exception(request) if index.nil?
+
         @requests.delete_at(index || @requests.length)
       else
         record_request(request)
@@ -38,18 +39,19 @@ module Grasshopper
 
     def verify_responds_to_heard_messages(instance)
       @requests.each do |request|
-        raise NotImplemented.new(request) unless instance.respond_to?(request.message)
+        raise NotImplemented, request unless instance.respond_to?(request.message)
       end
     end
 
     MessageHeard = Struct.new(:message, :args) do
       def to_s
-        "#{self.message}(#{self.args.join(", ")})"
+        "#{message}(#{args.join(', ')})"
       end
     end
 
-    def self.verify mock
+    def self.verify(mock)
       raise "Tried to verify a #{mock.class}" unless mock.is_a? Grasshopper::Mock
+
       mock.verify_next
       mock
     end
@@ -62,9 +64,9 @@ module Grasshopper
     end
   end
 
-  class NotSeen < ::Exception
+  class NotSeen < StandardError
   end
 
-  class NotImplemented < ::Exception
+  class NotImplemented < StandardError
   end
 end
