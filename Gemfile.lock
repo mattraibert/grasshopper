@@ -6,24 +6,12 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    ansi (1.5.0)
-    builder (3.2.4)
-    minitest (5.19.0)
-    minitest-reporters (1.6.1)
-      ansi
-      builder
-      minitest (>= 5.0)
-      ruby-progressbar
-    ruby-progressbar (1.13.0)
 
 PLATFORMS
   arm64-darwin-21
 
 DEPENDENCIES
-  bundler
   grasshopper!
-  minitest
-  minitest-reporters (>= 0.5.0)
 
 BUNDLED WITH
    2.4.17
