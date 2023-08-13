@@ -30,7 +30,8 @@ module Grasshopper
     end
 
     def not_seen_exception(request)
-      NotSeen.new("Should have seen an invocation of #{request})\n\nMessages Seen:\n#{@requests.map(&:to_s).join("\n")}")
+      NotSeen.new("Should have seen an invocation of #{request})\n\n" \
+                  "Messages Seen:\n#{@requests.map(&:to_s).join("\n")}")
     end
 
     def record_request(request)

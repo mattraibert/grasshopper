@@ -49,10 +49,10 @@ PLATFORMS
 
 DEPENDENCIES
   grasshopper!
-  minitest (>= 5.19)
-  minitest-reporters (>= 1.6)
-  rake (>= 13.0)
-  rubocop (>= 1.52)
+  minitest (~> 5.19)
+  minitest-reporters (~> 1.6)
+  rake (~> 13.0)
+  rubocop (~> 1.56)
 
 BUNDLED WITH
    2.4.17

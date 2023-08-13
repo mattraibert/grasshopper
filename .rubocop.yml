@@ -1,0 +1,8 @@
+inherit_from: .rubocop_todo.yml
+# target ruby version
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.0
+
+Style/Documentation:
+  Enabled: false
